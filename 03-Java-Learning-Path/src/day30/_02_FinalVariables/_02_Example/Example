@@ -1,0 +1,8 @@
+
+Task:
+
+Create a `Citizen` class with fields: `name`, `address`, and `idNumber (TCNo)`.
+In the `Government` class (which contains the `main` method), define and print 3 citizens.
+
+- The `idNumber (TCNo)` should be of type `int` and should increment sequentially.
+- The `idNumber (TCNo)` should not be changeable after it is assigned.

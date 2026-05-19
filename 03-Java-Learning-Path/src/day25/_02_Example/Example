@@ -1,0 +1,4 @@
+         // A module will be written to capture student information for a school registration program.
+         // The student's information includes (schoolNumber, firstName, lastName, class, and address).
+         // Create this structure.
+         // Then, define a student, assign values to its properties, and print the details.

@@ -1,0 +1,6 @@
+/*
+    A module will be written to capture student information for a school registration program.
+    The student’s information includes (firstName, lastName, grade, and address).
+    Create this structure.
+    Then, capture and fill in the information for 3 students from the user.
+*/

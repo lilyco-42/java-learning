@@ -1,0 +1,5 @@
+// Define a Bank class.
+// Add 3 fields: name, branchCount, establishmentYear.
+// Add 3 constructors.
+// Create a toString method.
+// Create 3 objects and print them in the main method.

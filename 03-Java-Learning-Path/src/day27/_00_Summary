@@ -1,0 +1,24 @@
+Difference and Purpose of Static and Non-Static Methods
+
+Static Methods:
+1. Declaration: Static methods are declared with the `static` keyword.
+2. Purpose: They are used to perform operations that are general
+   and independent of specific objects.
+   Static methods can be called without creating an instance of the class.
+3. Usage: Since these methods belong to the class itself (not to specific objects),
+   they can be directly accessed using the class name.
+4. Examples: Examples of static methods in Java include
+   `Math.random()` and `Integer.parseInt()`.
+
+Non-Static Methods:
+1. Object-Specific: Non-static methods operate on individual objects
+   and are specific to the instance they are called on.
+2. Instance Dependency: Since they work with the data of a particular object,
+   you must create an instance of the class (using `new`) and
+   call these methods through the instance variable.
+
+Summary:
+- Static Methods: Useful for tasks that do not depend on object-specific data,
+  allowing them to be called using the class name without needing an instance.
+- Non-Static Methods: Designed for operations that require access to the instance
+  variables of a particular object, necessitating the creation of an object instance to use them.

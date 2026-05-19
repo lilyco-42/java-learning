@@ -1,0 +1,14 @@
+Access Modifiers
+
+1. public: Accessible from anywhere in the project (class, method, field).
+
+2. default (no keyword, also known as "friendly"): Accessible only within the same package (class, method, field).
+
+3. private: Accessible only within the same class (method, field).
+
+4. protected: Will be explained later; similar to default.
+
+Access Options
+1. Access only from within the class.
+2. Access only from within the package.
+3. Access from anywhere in the project.

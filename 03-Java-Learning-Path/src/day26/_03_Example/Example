@@ -1,0 +1,6 @@
+/* 
+ * Step 1: Define a class named Person with attributes: name, surname, age 
+ * Step 2: Create two instances of this class in the main method and assign values to them 
+ * Step 3: Print these values 
+ * Step 4: Write a method named getBirthYear in the Person class that returns the birth year of the person when called 
+ */

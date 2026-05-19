@@ -1,0 +1,27 @@
+/*
+    Step 1: Define a class named Customer with a field: name.
+    Step 2: Define a class named ElectricityAccount with fields: totalConsumption (int), unitPrice (double).
+    Step 3: Add an ElectricityAccount to the Customer.
+    Step 4: Create one customer.
+    Step 5: Write a method to accumulate the energy consumed by the customer each month.
+             Let it be named addConsumption, which will accumulate each monthly value given.
+    Step 6: Calculate the amount to be paid by multiplying the total consumption by the unit price (20) and print the bill.
+
+    Hint: After creating the account, add 2-3 months of consumption using the addConsumption method,
+          then calculate the total and print the bill.
+*/
+
+public class EnerjiSA {
+
+    public static void main(String[] args) {
+        Customer customer1 = new Customer();
+        customer1.name = "John Doe";
+
+        customer1.electricityAccount.addConsumption(100); // January
+        customer1.electricityAccount.addConsumption(200); // February
+        customer1.electricityAccount.addConsumption(50);  // March
+
+        System.out.println("Total Consumption = " + customer1.electricityAccount.totalConsumption); // -> 350
+        customer1.electricityAccount.printBill(customer1.name);
+    }
+}

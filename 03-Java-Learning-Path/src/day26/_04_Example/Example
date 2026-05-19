@@ -1,0 +1,5 @@
+// Step 1: Define a type named Rectangle
+//         attributes: width(int), length(int)
+// Step 2: Write a method named "perimeter" to find the perimeter
+// Step 3: Write a method named "area" to find the area
+// Step 4: Assign values to an object and print the results of the methods
