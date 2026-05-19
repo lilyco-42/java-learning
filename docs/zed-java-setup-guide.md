@@ -348,14 +348,34 @@ $JAVA_HOME/bin/java -version
 
 Zed 优先使用项目根目录的 `mvnw` / `gradlew` wrapper。如果只想用系统安装的，删除 wrapper 或在系统 PATH 中确保 `mvn` / `gradle` 可用。
 
-### 7.4 Windows 上 task 执行失败
+### 7.4 Windows 上 task 执行失败（`IOError: 系统找不到指定的文件`）
 
-Zed 的内置 Java tasks 使用 `/bin/sh`，Windows 上需要 Git Bash 或 MSYS2 提供的 `sh`。确保 `sh` 在 PATH 中：
+**原因：** Zed 扩展的 Java tasks 硬编码了 `/bin/sh` 作为 shell。Windows 原生进程创建无法将 `/bin/sh` 解析为 Windows 路径，即使 Git Bash 的 `sh.exe` 在 PATH 中也是。
 
-```bash
-where sh
-# 应该输出 Git Bash 的 sh.exe 路径
+**解决方案：** 创建项目级 `.zed/tasks.json`，使用 Windows 完整路径的 `bash --login`：
+
+```json
+[
+  {
+    "label": "Java: run $ZED_CUSTOM_java_class_name",
+    "command": "...（同扩展原始命令）...",
+    "use_new_terminal": false,
+    "reveal": "always",
+    "tags": ["java-manual"],
+    "shell": {
+      "with_arguments": {
+        "program": "C:\\Program Files\\Git\\bin\\bash.exe",
+        "args": ["--login", "-c"]
+      }
+    }
+  }
+]
 ```
+
+> **关键点：**
+> - 使用 `bash.exe --login -c`，不是 `sh.exe`。`--login` 会初始化 MSYS2 环境，确保 `dirname`、`find`、`xargs` 等 Unix 工具在 PATH 中。
+> - 使用正向斜杠 `C:/...` 或双反斜杠 `C:\\...` 均可，Zed 都能正常解析。
+> - Tags 用自定义值（如 `java-manual`）避免与扩展自带 task 冲突。
 
 ### 7.5 Lombok 注解报错
 
@@ -386,8 +406,9 @@ where sh
 一套完整的 Zed Java 开发环境包含：
 
 1. **JDK 21** — 运行时和编译器
-2. **官方 `java` 扩展** — 语法、语言服务器、调试器
-3. **`settings.json` 中的 JDK 路径** — 让 JDTLS 找到 JDK
+2. **官方 `java` 扩展** — 语法、语言服务器（JDTLS）、调试器、Lombok
+3. **`settings.json` 中的 JDK 路径**（可选）— JDTLS 会自动检测 `JAVA_HOME`
 4. **Maven 或 Gradle** — 构建工具（可选，Zed 也支持纯 javac）
+5. **Windows 用户** — 需创建项目级 `.zed/tasks.json` 使用 `bash --login` 替代 `/bin/sh`
 
 配置完成后，Zed 提供与 IntelliJ IDEA / VS Code 同级别 Java 开发体验：智能补全、跳转定义、重构、断点调试、测试运行，且启动速度极快。
